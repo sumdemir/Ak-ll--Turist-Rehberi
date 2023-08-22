@@ -116,6 +116,7 @@ function searchRestaurant(e) {
 		url: url,
 		success: function (data) {
 			drawRestaurantMarkers(data, placeLocation);
+			moveToMap();
 		}
 	}).fail(function (jqXHR, status, err) {
 		printError("Unable to load data");
@@ -1231,6 +1232,7 @@ function searchHotels(e) {
 		success: function (data) {
 			drawHotelMarkers(data);
 			createTable(data);
+			moveToMap();
 		}
 	}).fail(function (jqXHR, status, err) {
 		printError("Unable to load data");
@@ -1336,23 +1338,15 @@ function createTable(data) {
 	var infoBlock = document.getElementById('info-block');
 
 	infoBlock.appendChild(ls);
-
-	
-
-
-
-
-	
 }
 
 function setMapCenter(lat,lng){
  	mymap.panTo([lat,lng]);
 	mymap.setZoom(25);
+	moveToMap();
+	console.log("xxx");
+}
 
-
-	
-	 
- }
 
 
 
